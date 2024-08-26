@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Category</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="product-list.css" />
+    <link rel="stylesheet" href="product-list-responsive.css" />
+  </head>
+  <body>
+    <nav class="navbar text-white bg-primary container">
+      <div class="humburger">
+        <img src="/assets/images/hamburger.png" class="hamburger" alt="" />
+      </div>
+      <div class="logo pointer">VENIA</div>
+      <ul class="menu f-base d-none-mob">
+        <li class="active"><a href="../Home/home.html">Home</a></li>
+        <li><a href="">Women</a></li>
+        <li><a href="">Men</a></li>
+        <li><a href="">Electronics</a></li>
+        <li><a href="">Jewellery</a></li>
+      </ul>
+      <div class="flex align-center text-center d-none-mob">
+        <input
+          type="text"
+          placeholder="Search by Name"
+          oninput="searchProduct(this.value)"
+        />
+      </div>
+      <div class="basket pointer">
+        <img
+          src="/assets/images/cart.png"
+          class="basket text-white"
+          alt="shopping-cart"
+        />
+        <span class="badge small">0</span>
+      </div>
+    </nav>
+
+    <section class="flex banner container" aria-label="banner">
+      <div class="banner-leftsection flex align-center justify-center">
+        <div class="left-content text-center text-white">
+          <h3 class="lh">Men's</h3>
+          <h3 class="lh">Outerwear</h3>
+        </div>
+      </div>
+      <div class="banner-rightsection">
+        <div class="banner-rightsection-bgImg"></div>
+      </div>
+    </section>
+
+    <section
+      class="container flex Product-List-Wrapper"
+      aria-label="products List"
+    >
+      <div class="filter-wrapper" aria-label="filter">
+        <nav class="breadcrumb">
+          <a href="#">Clothing</a>
+          <span>/</span>
+          <a href="#">Women's</a>
+          <span>/</span>
+          <a href="#" class="breadcrumb-item text-muted">Outerwear</a>
+        </nav>
+        <div class="flex justify-center align-center mobileFilterContainer">
+          <a
+            href="javascript:void(0)"
+            class="filterResult"
+            id="toggleFilterSidebar"
+            >Filter Results</a
+          >
+          <select
+            class="sortbySelectField"
+            name=""
+            id="sortByPrice"
+            onchange="sortProducts(this.value)"
+          >
+            <option value="">Sort by Price</option>
+            <option value="asc">Price - Low to High</option>
+            <option value="desc">Price - High to Low</option>
+          </select>
+        </div>
+        <div
+          class="mobileFilterContainer text-center"
+          id="mobileResultstxt"
+        ></div>
+        <div class="filters d-none-mob">
+          <h6 class="filter-heading">Filters</h6>
+          <div class="border-bottom"></div>
+          <div class="categories">
+            <p class="category-heading">Categories</p>
+            <div class="inputCheckContainer flex align-center">
+              <input
+                type="checkbox"
+                name=""
+                id="Jewellery"
+                class="pointer"
+                onchange="filterProducts('jewelery',this.checked)"
+              /><label for="Jewellery">Jewellery</label>
+            </div>
+            <div class="inputCheckContainer flex align-center">
+              <input
+                type="checkbox"
+                name=""
+                id="Electronics"
+                onchange="filterProducts('electronics',this.checked)"
+              /><label for="Electronics">Electronics</label>
+            </div>
+            <div class="inputCheckContainer flex align-center">
+              <input
+                type="checkbox"
+                name=""
+                id="MenClothing"
+                onchange="filterProducts(`men's clothing`,this.checked)"
+              /><label for="MenClothing">Men's Clothing</label>
+            </div>
+            <div class="inputCheckContainer flex align-center">
+              <input
+                type="checkbox"
+                name=""
+                id="WomenClothing"
+                onchange="filterProducts(`women's clothing`,this.checked)"
+              /><label for="WomenClothing">Women's Clothing</label>
+            </div>
+          </div>
+          <div class="border-bottom"></div>
+        </div>
+      </div>
+      <div class="productWrapper">
+        <div class="flex align-center justify-between sortByWrapper">
+          <div class="flex align-center text-center">
+            <input
+              type="text"
+              class="d-none"
+              placeholder="Search by Name"
+              oninput="searchProduct(this.value)"
+            />
+            <span class="d-none-mob" id="resultstxt"></span>
+          </div>
+          <select
+            class="sortbySelectField d-none-mob"
+            name=""
+            id="sortByPrice"
+            onchange="sortProducts(this.value)"
+          >
+            <option value="">Sort by Price</option>
+            <option value="asc">Price - Low to High</option>
+            <option value="desc">Price - High to Low</option>
+          </select>
+        </div>
+        <div class="product-container" id="productListContainer"></div>
+        <div id="showmoreContainer"></div>
+      </div>
+    </section>
+    <div class="sidebar hidden" id="sidebar">
+      <div class="filters">
+        <div class="flex justify-between align-center">
+          <h6 class="filter-heading">Filters</h6>
+          <p id="closeSidebar">&times;</p>
+        </div>
+        <div class="border-bottom"></div>
+        <div class="categories">
+          <p class="category-heading">Categories</p>
+          <div class="inputCheckContainer flex align-center">
+            <input
+              type="checkbox"
+              name=""
+              id="Jewellery"
+              class="pointer"
+              onchange="filterProducts('jewelery',this.checked)"
+            /><label for="Jewellery">Jewellery</label>
+          </div>
+          <div class="inputCheckContainer flex align-center">
+            <input
+              type="checkbox"
+              name=""
+              id="Electronics"
+              onchange="filterProducts('electronics',this.checked)"
+            /><label for="Electronics">Electronics</label>
+          </div>
+          <div class="inputCheckContainer flex align-center">
+            <input
+              type="checkbox"
+              name=""
+              id="MenClothing"
+              onchange="filterProducts(`men's clothing`,this.checked)"
+            /><label for="MenClothing">Men's Clothing</label>
+          </div>
+          <div class="inputCheckContainer flex align-center">
+            <input
+              type="checkbox"
+              name=""
+              id="WomenClothing"
+              onchange="filterProducts(`women's clothing`,this.checked)"
+            /><label for="WomenClothing">Women's Clothing</label>
+          </div>
+        </div>
+        <div class="border-bottom"></div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="flex container">
+        <div class="footer-content">
+          <p class="footer-heading"><b>Account</b></p>
+          <a href="" class="text-muted">Sign In</a>
+          <a href="" class="text-muted">Register</a>
+          <a href="" class="text-muted">Order Status</a>
+        </div>
+        <div class="footer-content">
+          <p class="footer-heading"><b>Account</b></p>
+          <a href="" class="text-muted">Sign In</a>
+          <a href="" class="text-muted">Register</a>
+          <a href="" class="text-muted">Order Status</a>
+        </div>
+        <div class="footer-content">
+          <p class="footer-heading"><b>Account</b></p>
+          <a href="" class="text-muted">Sign In</a>
+          <a href="" class="text-muted">Register</a>
+          <a href="" class="text-muted">Order Status</a>
+        </div>
+        <div class="footer-content followus">
+          <p class="footer-heading"><b>Follow Us!</b></p>
+          <p class="text-muted">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Praesentium et fugiat veritatis. Error, quam dicta!
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom flex align-center container">
+        <div class="logo">VENIA</div>
+        <div class="footerCopyright">
+          <p class="text-muted">
+            &copy; 2024 Your Company. All Rights Reserved.
+          </p>
+        </div>
+        <div class="footerPolicy">
+          <small><a href="">Terms of Use</a></small>
+          <small><a href="">Privacy Policy</a></small>
+        </div>
+      </div>
+    </footer>
+
+    <div id="errorModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 class="modal-title">Error Occurred</h2>
+        <p class="modal-message">
+          An error has occurred while processing your request. Please try again
+          later.
+        </p>
+        <button class="btn bg-primary btn-primary" id="retry-button">
+          Retry
+        </button>
+        <button class="btn bg-secondary btn-secondary" id="cancel-button">
+          Cancel
+        </button>
+      </div>
+    </div>
+
+    <script src="js/product-list.js"></script>
+  </body>
+</html>

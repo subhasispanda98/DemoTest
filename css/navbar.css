@@ -1,0 +1,53 @@
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.logo {
+    font-size: 24px;
+    letter-spacing: 6px;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+}
+
+.menu li {
+    height: 100%;
+    padding: 20px 0;
+    margin: 0 15px;
+    cursor: pointer;
+}
+
+.menu li a {
+    font-weight: 400;
+}
+
+.menu li.active {
+    border-bottom: 2px solid #fff;
+}
+
+.basket {
+    position: relative;
+    width: 24px;
+}
+
+.badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -4px;
+    right: -2px;
+    background-color: #000;
+    color: white;
+    border-radius: 100%;
+    width: 15px;
+    height: 15px;
+}
